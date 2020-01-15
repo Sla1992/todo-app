@@ -3,12 +3,12 @@ import './Counter.css'
 
 class CounterButton extends Component{
 
-    constructor() {
-      super() //Error 1
-      this.state = {
-        counter : 0
-      };
-    }
+    // constructor() {
+    //   super() //Error 1
+    //   this.state = {
+    //     counter : 0
+    //   };
+    // }
     
     //Define the initial state in a constructor
     //state => counter 0
