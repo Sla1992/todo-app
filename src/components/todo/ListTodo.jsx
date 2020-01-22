@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import AuthenticationService from "./AuthenticationService";
 import TodoDataService from "./TodoDataService";
+import moment from 'moment'
 
 class ListTodo extends Component {
 
@@ -12,6 +13,8 @@ class ListTodo extends Component {
         };
         this.deleteTodoClicked = this.deleteTodoClicked.bind(this);
         this.updateTodoClicked = this.updateTodoClicked.bind(this);
+        this.addTodoClicked = this.addTodoClicked.bind(this);
+        this.refreshTodos = this.refreshTodos.bind(this);
     }
     render() {
         return(
@@ -36,7 +39,7 @@ class ListTodo extends Component {
                                     <tr key={todo.id}>
                                         <td>{todo.description}</td>
                                         <td>{todo.done.toString()}</td>
-                                        <td>{todo.targetDate.toString()}</td>
+                                        <td>{moment(todo.targetDate).format('YYYY-MM-DD')}</td>
                                         <td><button className="btn btn-success" onClick={() => this.updateTodoClicked(todo.id)}>Update</button></td>
                                         <td><button className="btn btn-warning" onClick={() => this.deleteTodoClicked(todo.id)}>Delete</button></td>
                                     </tr>
@@ -44,6 +47,9 @@ class ListTodo extends Component {
                         }
                         </tbody>
                     </table>
+                    <div className="row">
+                        <button className="btn btn-success" onClick={this.addTodoClicked}>Add</button>
+                    </div>
                 </div>
             </div>
         )
@@ -77,6 +83,11 @@ class ListTodo extends Component {
             this.setState({message : `Delete of todo ${id} Successful`});
             this.refreshTodos();
         })
+    }
+
+    addTodoClicked(){
+        //console.log('update' + id)
+        this.props.history.push(`/todos/-1`)
     }
 
     updateTodoClicked(id) {
