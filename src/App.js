@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './App.css';
-import PropTypes from 'prop-types'
+
 
 import TodoApp from './components/todo/TodoApp'
 import './bootstrap.css';
